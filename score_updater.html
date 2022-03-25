@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Score Updater!</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <img src="./cricket.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Score Updater
+            </div>
+        </div>
+    </nav>
+
+    <form onsubmit="return updateRun();">
+        <div class="container mt-5 row">
+            <div class="col-md-5">
+            </div>
+
+            <div class="card col-md-5">
+                <div class="card-header">
+                    Score Board
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <div class="score">
+                            <span id="score"></span>
+                            <span>/</span>
+                            <span id="wicket"></span>
+                            <span id="overs"></span>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="container mt-5 row">
+            <div class="col-md-5">
+            </div>
+
+            <div class="card col-md-5">
+                <div class="card-header">
+                    Striker AND Non-Striker AND Bowler
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <select class="form-select" aria-label="Default select example" id="striker">
+                            <option selected disabled>Striker</option>
+                        </select>
+                        <select class="form-select mt-3" aria-label="Default select example" id="nonStriker">
+                            <option selected disabled>Non-Striker</option>
+                        </select>
+                        <select class="form-select mt-3" aria-label="Default select example" id="bowler">
+                            <option selected disabled>Bowler</option>
+                        </select>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="container mt-5 row">
+            <div class="col-md-5">
+            </div>
+
+            <div class="card col-md-5">
+                <div class="card-header">
+                    Extras AND Wicket
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="ball" name="extras" checked>
+                            <label class="form-check-label" for="inlineCheckbox1">Ball Increase</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" id="noBall" name="extras">
+                            <label class="form-check-label" for="inlineCheckbox1">Ball Not Increase</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id="wicketFallen" name="extras">
+                            <label class="form-check-label" for="inlineCheckbox2">Wicket</label>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="container mt-5 row">
+            <div class="col-md-5">
+            </div>
+
+            <div class="card col-md-5">
+                <div class="card-header">
+                    RUNS
+                </div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run0" value="0" checked>
+                            <label class="form-check-label" for="inlineRadio1">0</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run1" value="1">
+                            <label class="form-check-label" for="inlineRadio2">1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run2" value="2">
+                            <label class="form-check-label" for="inlineRadio2">2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run3" value="3">
+                            <label class="form-check-label" for="inlineRadio2">3</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run4" value="4">
+                            <label class="form-check-label" for="inlineRadio2">4</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run5" value="5">
+                            <label class="form-check-label" for="inlineRadio2">5</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run6" value="6">
+                            <label class="form-check-label" for="inlineRadio2">6</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run7" value="7">
+                            <label class="form-check-label" for="inlineRadio2">7</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run8" value="8">
+                            <label class="form-check-label" for="inlineRadio2">8</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run9" value="9">
+                            <label class="form-check-label" for="inlineRadio2">9</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="run" id="run10" value="10">
+                            <label class="form-check-label" for="inlineRadio2">10</label>
+                        </div>
+                    </blockquote>
+                </div>
+            </div>
+
+            <div class="col-md-1">
+            </div>
+        </div>
+
+        <div class="container text-center my-5">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/8.2.2/firebase-app.js"></script>
+
+    <script>
+        const matchId = new URLSearchParams(window.location.search).get('id');
+
+        async function isTeamOnePlaying() {
+            let say = await import('./utility.js');
+            say.isTeamOnePlaying(matchId);
+        }
+
+        async function getScore() {
+            let say = await import('./utility.js');
+            say.getScore(matchId, document.getElementById("score"));
+        }
+
+        async function getWickets() {
+            let say = await import('./utility.js');
+            say.getWickets(matchId, document.getElementById("wicket"));
+        }
+
+        async function getOvers() {
+            let say = await import('./utility.js');
+            say.getOvers(matchId, document.getElementById("overs"));
+        }
+
+        async function getAllStriker() {
+            let say = await import('./utility.js');
+            say.getAllStriker(matchId, document.getElementById("nonStriker"));
+            say.getAllStriker(matchId, document.getElementById("striker"));
+        }
+
+        async function getAllNonStriker() {
+            let say = await import('./utility.js');
+            say.getAllNonStriker(matchId, document.getElementById("bowler"));
+        }
+
+
+        setTimeout(function () {
+            isTeamOnePlaying();
+            setTimeout(function () {
+                getScore();
+            }, 2000);
+
+            isTeamOnePlaying();
+            setTimeout(function () {
+                getWickets();
+            }, 2000);
+
+            isTeamOnePlaying();
+            setTimeout(function () {
+                getOvers();
+            }, 2000);
+
+            isTeamOnePlaying();
+            setTimeout(function () {
+                getAllStriker();
+            }, 2000);
+
+            isTeamOnePlaying();
+            setTimeout(function () {
+                getAllNonStriker();
+            }, 2000);
+        }, 0000);
+
+        function bowlChange() {
+            if (document.getElementById("ball").checked) return 1;
+            if (document.getElementById("noBall").checked) return 0;
+        }
+
+        function scoreUpdate() {
+            if (document.getElementById("run0").checked) return 0;
+            if (document.getElementById("run1").checked) return 1;
+            if (document.getElementById("run2").checked) return 2;
+            if (document.getElementById("run3").checked) return 3;
+            if (document.getElementById("run4").checked) return 4;
+            if (document.getElementById("run5").checked) return 5;
+            if (document.getElementById("run6").checked) return 6;
+            if (document.getElementById("run7").checked) return 7;
+            if (document.getElementById("run8").checked) return 8;
+            if (document.getElementById("run9").checked) return 9;
+            if (document.getElementById("run10").checked) return 10;
+        }
+
+        async function changeScore(run) {
+            let say = await import('./utility.js');
+            say.updateRun(matchId, run);
+        }
+
+        async function changeBall(ball) {
+            let say = await import('./utility.js');
+            say.updateBall(matchId, ball);
+        }
+
+        async function changeWicket(ball) {
+            let say = await import('./utility.js');
+            say.updateWicket(matchId);
+        }
+
+        async function update_Bowler() {
+            let say = await import('./utility.js');
+            say.updateBowler(matchId, document.getElementById("bowler").value);
+        }
+
+        async function update_Striker() {
+            let say = await import('./utility.js');
+            say.updateStriker(matchId, document.getElementById("striker").value);
+        }
+
+        async function update_NonStriker() {
+            let say = await import('./utility.js');
+            say.updateNonStriker(matchId, document.getElementById("nonStriker").value);
+        }
+
+        function updateRun() {
+            let runChag = scoreUpdate();
+            let bowlChg = bowlChange();
+
+            update_Bowler();
+            update_Striker();
+            update_NonStriker();
+
+            isTeamOnePlaying();
+            setTimeout(function () {
+                changeScore(runChag);
+            }, 2000);
+
+            isTeamOnePlaying();
+            setTimeout(function () {
+                changeBall(bowlChg);
+            }, 2000);
+
+
+            if (document.getElementById("wicketFallen").checked) {
+                isTeamOnePlaying();
+                setTimeout(function () {
+                    changeWicket();
+                }, 2000);
+            }
+
+            setTimeout(function () {
+                getScore();
+                getWickets();
+                getOvers();
+            }, 3000);
+
+
+            return false;
+        }
+    </script>
+</body>
+
+</html>
